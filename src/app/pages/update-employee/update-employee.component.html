@@ -1,0 +1,96 @@
+<mat-form-field>
+    <mat-label>Select Employee</mat-label>
+    <mat-select [(ngModel)]="selectedEmpId" (selectionChange)="callOnChange()">
+        <mat-option *ngFor="let data of userData" [value]="data.employeeId">
+            {{ data.fullName }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+
+<div class="employee-update-data">
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" class="form-container">
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Full Name</mat-label>
+            <input matInput formControlName="fullName">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Phone</mat-label>
+            <input matInput formControlName="phone">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Gender</mat-label>
+            <mat-select formControlName="gender">
+                <mat-option value="Male">Male</mat-option>
+                <mat-option value="Female">Female</mat-option>
+                <mat-option value="Other">Other</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Date of Joining</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dateOfJoining">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <!-- <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Designation</mat-label>
+            <mat-select formControlName="designationId">
+                <mat-option *ngFor="let designation of designationsList" [value]="designation.designationId">
+                    {{ designation.designationName }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Department</mat-label>
+            <mat-select formControlName="departmentId">
+                <mat-option *ngFor="let data of departmentsDetails" [value]="data.departmentId">
+                    {{ data.departmentName }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field> -->
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Department</mat-label>
+            <mat-select formControlName="departmentId" (selectionChange)="onDepartmentChange($event)">
+                <mat-option *ngFor="let data of departmentsDetails" [value]="data.departmentId">
+                    {{ data.departmentName }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Designation</mat-label>
+            <mat-select formControlName="designationId">
+                <mat-option *ngFor="let d of designationsList" [value]="d.designationId">
+                    {{ d.designationName }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Employee Type</mat-label>
+            <mat-select formControlName="employeeType">
+                <mat-option value="full time">full time</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Salary</mat-label>
+            <input matInput type="number" formControlName="salary">
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" class="full-width">Submit</button>
+    </form>
+
+</div>

@@ -1,0 +1,40 @@
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Dep</th>
+            <th scope="col">Designation</th>
+            <th scope="col">Type</th>
+            <th scope="col">Salary</th>
+            <th scope="col">DOJ</th>
+            <th scope="col">Action</th>
+            <!-- <th scope="col">Action</th> -->
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let userDatas of userData">
+            <th>{{userDatas.employeeId}}</th>
+            <td>{{userDatas.fullName}}</td>
+            <td>{{userDatas.departmentName}}</td>
+            <td>{{userDatas.designationName}}</td>
+            <td>{{userDatas.employeeType}}</td>
+            <td>{{userDatas.salary}}</td>
+            <td>{{userDatas.dateOfJoining | date}}</td>
+            <td>
+                <button class="btn btn-danger" (click)="delEmp(userDatas.employeeId)">Delete</button>
+            </td>
+        </tr>
+        <!-- <tr>
+            <th>2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>fat</td>
+        </tr>
+        <tr>
+            <th>3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>twitter</td>
+        </tr> -->
+    </tbody>
+</table>

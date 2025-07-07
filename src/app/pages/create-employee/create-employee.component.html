@@ -1,0 +1,66 @@
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" class="form-container">
+
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Full Name</mat-label>
+        <input matInput formControlName="fullName">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Phone</mat-label>
+        <input matInput formControlName="phone">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="gender">
+            <mat-option value="Male">Male</mat-option>
+            <mat-option value="Female">Female</mat-option>
+            <mat-option value="Other">Other</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Date of Joining</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dateOfJoining">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Department</mat-label>
+        <mat-select formControlName="departmentId" (selectionChange)="getDesignationsByDept()">
+            <mat-option *ngFor="let dept of departments" [value]="dept.departmentId">{{ dept.departmentName
+                }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Designation</mat-label>
+        <mat-select formControlName="designationId">
+            <mat-option *ngFor="let desig of designations" [value]="desig.designationId">{{ desig.designationName
+                }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Employee Type</mat-label>
+        <mat-select formControlName="employeeType">
+            <mat-option value="Full Time">Full Time</mat-option>
+            <mat-option value="Part Time">Part Time</mat-option>
+            <mat-option value="Intern">Intern</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Salary</mat-label>
+        <input matInput type="number" formControlName="salary">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" class="full-width">Submit</button>
+
+</form>
