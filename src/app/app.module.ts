@@ -17,6 +17,15 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule, provideNativeDateAdapter} from '@angular/material/core';
+import { LeaveManagementComponent } from './pages/leave-management/leave-management.component';
+import {MatButtonModule} from '@angular/material/button';
+import { CalendarComponent } from './pages/calendar/calendar.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +33,9 @@ import {MatNativeDateModule, provideNativeDateAdapter} from '@angular/material/c
     ListEmployeeComponent,
     UpdateEmployeeComponent,
     LayoutComponent,
-    LoginComponent
+    LoginComponent,
+    LeaveManagementComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +47,8 @@ import {MatNativeDateModule, provideNativeDateAdapter} from '@angular/material/c
     MatFormFieldModule,
     MatSelectModule,
     MatDatepickerModule,
+    MatButtonModule,
+    FullCalendarModule
   ],
   providers: [
     provideAnimationsAsync(),

@@ -1,0 +1,134 @@
+<div class="leave-management-container">
+    <!-- Leave Summary -->
+    <div class="container my-3">
+        <div class="row text-center">
+            <div class="col-md-2"></div>
+            <div class="col-md-2 total-leave">
+                <p class="total_leave-header">Sick Leave</p>
+                <p class="total_leave-result">{{ leaveDetails.sickLeave }}</p>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-2 total-leave">
+                <p class="total_leave-header">Casual Leave</p>
+                <p class="total_leave-result">{{ leaveDetails.casualLeave }}</p>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-2 total-leave">
+                <p class="total_leave-header">Privilege Leave</p>
+                <p class="total_leave-result">{{ leaveDetails.privilageLeave }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leave Application Form -->
+    <div class="container">
+        <form [formGroup]="leaveForm" (ngSubmit)="onSubmit()" class="mt-3">
+            <div class="row gy-4">
+                <h2>Apply Leave</h2>
+
+                <!-- Leave Type Dropdown -->
+                <div class="col-md-4">
+                    <mat-form-field appearance="fill" class="w-100">
+                        <mat-label>Select Leave Type</mat-label>
+                        <mat-select formControlName="leaveType">
+                            <mat-option value="">None</mat-option>
+                            <mat-option *ngIf="leaveDetails.sickLeave > 0" value="sick">Sick Leave</mat-option>
+                            <mat-option *ngIf="leaveDetails.casualLeave > 0" value="casual">Casual Leave</mat-option>
+                            <mat-option *ngIf="leaveDetails.privilageLeave > 0" value="privilageLeave">Privilege
+                                Leave</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="leaveForm.get('leaveType')?.hasError('required')">
+                            Leave type is required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <!-- Comment Box -->
+                <div class="col-md-4">
+                    <mat-form-field appearance="fill" class="w-100">
+                        <mat-label>Leave Comment</mat-label>
+                        <textarea matInput placeholder="E.g. Feeling unwell..." formControlName="comment"></textarea>
+                        <mat-error *ngIf="leaveForm.get('comment')?.hasError('required')">
+                            Comment is required
+                        </mat-error>
+                        <mat-error *ngIf="leaveForm.get('comment')?.hasError('minlength')">
+                            Minimum 5 characters required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <!-- Date Range Picker -->
+                <div class="col-md-4" formGroupName="leaveDates">
+                    <mat-form-field appearance="fill" class="w-100">
+                        <mat-label>Leave Dates</mat-label>
+                        <mat-date-range-input [rangePicker]="picker">
+                            <input matStartDate formControlName="start" placeholder="Start date" />
+                            <input matEndDate formControlName="end" placeholder="End date" />
+                        </mat-date-range-input>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-date-range-picker #picker></mat-date-range-picker>
+                        <mat-error
+                            *ngIf="leaveForm.get('leaveDates.start')?.hasError('required') || leaveForm.get('leaveDates.end')?.hasError('required')">
+                            Both start and end dates are required
+                        </mat-error>
+                        <mat-error *ngIf="leaveForm.hasError('dateRangeInvalid')">
+                            Selected range exceeds allowed leave balance or includes past dates.
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="col-md-12 text-end">
+                    <button mat-raised-button color="primary" type="submit" [disabled]="leaveForm.invalid">
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Leave History Table -->
+    <div class="container mt-5">
+        <div class="leave-table-container">
+            <h4>Leave History</h4>
+            <table class="leave-table">
+                <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>Leave Type</th>
+                        <th>Applied On</th>
+                        <th>Leave Range</th>
+                        <th>Total Days</th>
+                        <th>Status</th>
+                        <th>Manager Comment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let leave of leaveList; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ leave.leaveType }}</td>
+                        <td>{{ leave.appliedOn | date: 'dd/MM/yyyy' }}</td>
+                        <td>{{ leave.startDate | date: 'dd/MM/yyyy' }} - {{ leave.endDate | date: 'dd/MM/yyyy' }}</td>
+                        <td>{{ leave.totalDays }}</td>
+                        <td>
+                            <span [ngClass]="{
+          'status-pending': leave.status === 'Pending',
+          'status-approved': leave.status === 'Approved',
+          'status-rejected': leave.status === 'Rejected'
+        }">
+                                {{ leave.status }}
+                            </span>
+                        </td>
+                        <td>
+                            <span *ngIf="leave.status === 'Rejected'; else noComment">
+                                {{ leave.comment }}
+                            </span>
+                            <ng-template #noComment>-</ng-template>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

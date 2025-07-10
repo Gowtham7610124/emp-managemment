@@ -6,6 +6,8 @@ import { ListEmployeeComponent } from './pages/list-employee/list-employee.compo
 import { UpdateEmployeeComponent } from './pages/update-employee/update-employee.component';
 import { CreateEmployeeComponent } from './pages/create-employee/create-employee.component';
 import { authGuard } from './auth/auth.guard';
+import { LeaveManagementComponent } from './pages/leave-management/leave-management.component';
+import { CalendarComponent } from './pages/calendar/calendar.component';
 
 const routes: Routes = [
    { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -30,7 +32,14 @@ const routes: Routes = [
         path: 'create-employee',
         component: CreateEmployeeComponent,
         canActivate:[authGuard]
-
+      },{
+        path:'employee-leave',
+        component:LeaveManagementComponent,
+        canActivate:[authGuard]
+      },{
+        path:'employee-calendar',
+        component:CalendarComponent,
+        canActivate:[authGuard]
       }
     ]
   },
