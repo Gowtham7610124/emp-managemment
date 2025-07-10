@@ -41,7 +41,6 @@ export class CreateEmployeeComponent {
       .subscribe({
         next: (res: any) => {
           this.departments = res;
-          console.log("departments ======", this.departments);
         },
         error: (err) => {
           console.error("Error fetching departments:", err);
@@ -56,7 +55,6 @@ export class CreateEmployeeComponent {
     .subscribe({
       next: (res) => {
         this.designations = res;
-        console.log("Designations loaded:", this.designations);
       },
       error: (err) => {
         console.error("Failed to load designations:", err);

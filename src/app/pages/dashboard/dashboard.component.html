@@ -1,0 +1,35 @@
+<div class="dashboard-container">
+    <!-- <h2 class="text-center">Employee Dashboard</h2> -->
+
+    <div class="row my-3">
+        <div class="col-md-6 mb-4">
+            <h4>Leave Taken</h4>
+            <canvas baseChart [data]="barChartData" [type]="barChartType" [options]="barChartOptions">
+            </canvas>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <h4>Leave Balance</h4>
+            <canvas baseChart [data]="doughnutChartData" [type]="doughnutChartType">
+            </canvas>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <h4>Monthly Attendance</h4>
+            <canvas baseChart [data]="lineChartData" [type]="lineChartType" [options]="lineChartOptions">
+            </canvas>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <h4>Department Distribution</h4>
+            <canvas baseChart [data]="pieChartData" [type]="pieChartType">
+            </canvas>
+        </div>
+
+        <div class="col-md-12 mb-4">
+            <h4>Employee Skills Evaluation</h4>
+            <canvas baseChart [data]="radarChartData" [type]="radarChartType">
+            </canvas>
+        </div>
+    </div>
+</div>

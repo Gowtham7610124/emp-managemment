@@ -8,6 +8,7 @@ import { CreateEmployeeComponent } from './pages/create-employee/create-employee
 import { authGuard } from './auth/auth.guard';
 import { LeaveManagementComponent } from './pages/leave-management/leave-management.component';
 import { CalendarComponent } from './pages/calendar/calendar.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 const routes: Routes = [
    { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -18,6 +19,11 @@ const routes: Routes = [
     path: 'layout',
     component: LayoutComponent,
     children: [
+      {
+        path: 'emp-dashboard',
+        component: DashboardComponent,
+        canActivate:[authGuard]
+      },
       {
         path: 'emp-list',
         component: ListEmployeeComponent,

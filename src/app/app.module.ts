@@ -23,7 +23,8 @@ import { CalendarComponent } from './pages/calendar/calendar.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
-
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { BaseChartDirective } from 'ng2-charts';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import interactionPlugin from '@fullcalendar/interaction';
     LayoutComponent,
     LoginComponent,
     LeaveManagementComponent,
-    CalendarComponent
+    CalendarComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,8 @@ import interactionPlugin from '@fullcalendar/interaction';
     MatSelectModule,
     MatDatepickerModule,
     MatButtonModule,
-    FullCalendarModule
+    FullCalendarModule,
+    BaseChartDirective
   ],
   providers: [
     provideAnimationsAsync(),

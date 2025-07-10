@@ -20,7 +20,6 @@ export class ListEmployeeComponent {
       .subscribe({
         next: (res: any) => {
           this.userData = res;
-          console.log("userData ======", this.userData);
         },
         error: (err) => {
           console.error("Error fetching users:", err);

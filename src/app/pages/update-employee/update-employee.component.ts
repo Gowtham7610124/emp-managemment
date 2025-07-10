@@ -40,7 +40,6 @@ export class UpdateEmployeeComponent {
       .subscribe({
         next: (res: any) => {
           this.departmentsDetails = res;
-          console.log("departmentsDetails ======", this.departmentsDetails);
         },
         error: (err) => {
           console.error("Error fetching departments:", err);
@@ -53,7 +52,6 @@ export class UpdateEmployeeComponent {
       .subscribe({
         next: (res: any) => {
           this.userData = res;
-          console.log("userData ======", this.userData);
         },
         error: (err) => {
           console.error("Error fetching users:", err);

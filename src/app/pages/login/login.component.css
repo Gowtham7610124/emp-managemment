@@ -1,89 +1,86 @@
-.employee-login-container {
-    margin: 0;
-    height: 100vh;
-    width: 100vw;
-    font-weight: 700;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #555;
-    background-color: #f6f6f6;
+.auth-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 40px 30px;
+  background-color: #f0f4f8;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
 }
 
-.login-part {
-    width: 430px;
-    height: 700px;
-    background-color: #ecf0f3;
-    padding: 60px 35px 35px 35px;
-    border-radius: 40px;
-    box-shadow: 13px 13px 20px #cbced1,
-    -13px -13px 20px #fff;
+.tab-header {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
 }
 
-.logo {
-    background: url('/assets/logo.jpg');
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin: 0 auto;
+.tab-header div {
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
 }
 
-.title {
-    text-align: center;
-    font-size: 28px;
-    padding-top: 24px;
+.tab-header .active {
+  border-bottom: 3px solid #02c8db;
+  color: #02c8db;
 }
 
-.fields {
-    width: 100%;
-    padding: 75px 5px 5px 5px;
+.auth-form {
+  display: flex;
+  flex-direction: column;
 }
 
-.fields input {
-    border: none;
-    outline: none;
-    background: none;
-    font-size: 18px;
-    padding: 20px 10px 20px 5px;
+.form-group {
+  margin-bottom: 20px;
 }
 
-.username , .password {
-    margin-bottom: 30px;
-    box-shadow: 8px 8px 8px #cbced1 , -8px -8px 8px #fff;
-    border-radius: 25px;
+.form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
 }
 
-.svg-icon {
-    height: 22px;
-    margin: 0 10px -4px 25px;
+.submit-btn {
+  padding: 12px;
+  background-color: #02c8db;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.login-button {
-    width: 100%;
-    height: 60px;
-    border: none;
-    cursor: pointer;
-    background: #02c8db;
-    color: #fff;
-    border-radius: 30px;
-    font-size: 20px;
-    font-weight: 700;
-    box-shadow: 3px 3px 8px #b1b1b1 , -3px -3px 8px #fff;
-    transition: all .4s ease-in;
-}
-
-.login-button:hover {
-    background: #50e5b9;
-    font-size: 25px;
+.submit-btn:hover {
+  background-color: #50e5b9;
 }
 
 .link {
-    padding-top: 20px;
-    text-align: center;
+  margin-top: 15px;
+  text-align: center;
+  color: #777;
 }
 
-.link a {
-    text-decoration: none;
-    color: #aaa;
+.error-message {
+  color: red;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+
+@media (max-width: 480px) {
+  .auth-container {
+    margin: 20px;
+    padding: 25px 20px;
+  }
+
+  .tab-header div {
+    font-size: 14px;
+  }
 }
